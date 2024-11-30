@@ -13,8 +13,6 @@ import pandas as pd
 import json
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 
-
-
 @aql.dataframe(task_id="load")
 def load_func():
     from airflow.operators.python import get_current_context
