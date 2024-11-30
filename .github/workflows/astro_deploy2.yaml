@@ -1,4 +1,4 @@
-name: Astronomer CI - Deploy code (Multiple Branches)
+name: Astronomer CI - Deploy code (teste)
 on:
   push:
     branches: [dev]
