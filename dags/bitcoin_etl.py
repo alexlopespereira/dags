@@ -14,12 +14,13 @@ import json
 from datetime import datetime, timedelta
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 
+
 @aql.dataframe(task_id="python_1")
 def python_1_func():
     from airflow.operators.python import get_current_context
     context = get_current_context()
     start_date = context['dag'].start_date
-    print(f"DAG start date: {start_date}... ok 5")
+    print(f"DAG start date: {start_date}... ok 6")
     
     
     # Define the time range for yesterday
