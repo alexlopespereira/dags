@@ -73,7 +73,7 @@ default_args={
 @dag(
     default_args=default_args,
     schedule="0 0 * * *",
-    start_date=pendulum.from_format("2024-11-28", "YYYY-MM-DD").in_tz("UTC"),
+    start_date=pendulum.from_format("2024-04-01", "YYYY-MM-DD").in_tz("UTC"),
     catchup=True,
     owner_links={
         "Alex Lopes": "mailto:alexlopespereira@gmail.com",
