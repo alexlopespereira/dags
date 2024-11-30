@@ -20,7 +20,7 @@ def python_1_func():
     from airflow.operators.python import get_current_context
     context = get_current_context()
     start_date = context['dag'].start_date
-    print(f"DAG start date: {start_date}... ok 3")
+    print(f"DAG start date: {start_date}... ok 4")
     
     
     # Define the time range for yesterday
