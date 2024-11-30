@@ -14,7 +14,6 @@ import json
 from datetime import datetime, timedelta
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 
-
 @aql.dataframe(task_id="python_1")
 def python_1_func():
     from airflow.operators.python import get_current_context
