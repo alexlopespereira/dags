@@ -18,11 +18,9 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 @aql.dataframe(task_id="python_1")
 def python_1_func():
     from airflow.operators.python import get_current_context
-    
-    
     context = get_current_context()
     start_date = context['dag'].start_date
-    print(f"DAG start date: {start_date}")
+    print(f"DAG start date: {start_date}... ok")
     
     
     # Define the time range for yesterday
