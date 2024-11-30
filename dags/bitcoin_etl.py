@@ -41,28 +41,7 @@ def python_1_func():
         'end': end_timestamp
     }
     
-    # Make the API request
-    response = requests.get(url, params=params)
-    data = response.json()
-    
-    # Check if data is available
-    if 'data' in data:
-        # Convert data to pandas DataFrame
-        df = pd.DataFrame(data['data'])
-        # Convert time column to datetime
-        df['time'] = pd.to_datetime(df['time'], unit='ms')
-        # Set time as index
-        df.set_index('time', inplace=True)
-        # Display the DataFrame
-        print(df)
-    else:
-        print("No data available for the specified date range.")
-    
-    #### Load
-    pg_hook = PostgresHook(postgres_conn_id='postgres_default')
-    engine = pg_hook.get_sqlalchemy_engine()
-    df.to_sql('bitcoin_history', con=engine, if_exists='append', index=False)
-    
+    print(params)
     
 
 default_args={
