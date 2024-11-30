@@ -59,7 +59,7 @@ def python_1_func():
         print("No data available for the specified date range.")
     
     #### Load
-    pg_hook = PostgresHook(postgres_conn_id='postgres')
+    pg_hook = PostgresHook(postgres_conn_id='postgres_default')
     engine = pg_hook.get_sqlalchemy_engine()
     df.to_sql('bitcoin_history', con=engine, if_exists='append', index=False)
     
