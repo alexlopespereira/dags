@@ -22,6 +22,7 @@ def python_1_func():
     start_date = context['dag_run'].execution_date
     print(f"DAG start date: {start_date}")
     
+    
     # Define the time range for yesterday
     end_time = start_date.replace(hour=0, minute=0, second=0, microsecond=0)
     start_time = end_time - timedelta(days=1)
@@ -71,7 +72,7 @@ default_args={
 @dag(
     default_args=default_args,
     schedule="0 0 * * *",
-    start_date=pendulum.from_format("2024-11-30", "YYYY-MM-DD").in_tz("UTC"),
+    start_date=pendulum.from_format("2023-05-30", "YYYY-MM-DD").in_tz("UTC"),
     catchup=True,
     owner_links={
         "Alex Lopes": "mailto:alexlopespereira@gmail.com",
