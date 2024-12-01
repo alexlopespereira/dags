@@ -35,7 +35,7 @@ def python_1_func():
     
     # Parameters for the API request
     params = {
-        'interval': 'h1',  # Hourly data
+        'interval': 'd1',  # diario
         'start': start_timestamp,
         'end': end_timestamp
     }
