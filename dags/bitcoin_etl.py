@@ -19,9 +19,9 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 def python_1_func():
     from airflow.operators.python import get_current_context
     context = get_current_context()
-    start_date = context['dag'].start_date
+    start_date = context['ti'].start_date
     print(f"DAG start date: {start_date}... ok 7")
-    
+    print(f"context dag = {context['ti'].start_date}")
     
     # Define the time range for yesterday
     end_time = start_date.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -41,7 +41,28 @@ def python_1_func():
         'end': end_timestamp
     }
     
-    print(params)
+    # Make the API request
+    response = requests.get(url, params=params)
+    data = response.json()
+    
+    # Check if data is available
+    if 'data' in data:
+        # Convert data to pandas DataFrame
+        df = pd.DataFrame(data['data'])
+        # Convert time column to datetime
+        df['time'] = pd.to_datetime(df['time'], unit='ms')
+        # Set time as index
+        df.set_index('time', inplace=True)
+        # Display the DataFrame
+        print(df)
+    else:
+        print("No data available for the specified date range.")
+    
+    #### Load
+    pg_hook = PostgresHook(postgres_conn_id='postgres_default')
+    engine = pg_hook.get_sqlalchemy_engine()
+    df.to_sql('bitcoin_history', con=engine, if_exists='append', index=False)
+    
     
 
 default_args={
