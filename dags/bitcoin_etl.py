@@ -22,7 +22,6 @@ def python_1_func():
     start_date = context['dag_run'].execution_date
     print(f"DAG start date: {start_date}")
     
-    
     # Define the time range for yesterday
     end_time = start_date.replace(hour=0, minute=0, second=0, microsecond=0)
     start_time = end_time - timedelta(days=1)
@@ -38,8 +37,7 @@ def python_1_func():
     params = {
         'interval': 'd1',  # diario
         'start': start_timestamp,
-        'end': end_timestamp
-    }
+        'end': end_timestamp}
     
     # Make the API request
     response = requests.get(url, params=params)
