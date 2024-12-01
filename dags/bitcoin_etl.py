@@ -22,6 +22,7 @@ def python_1_func():
     start_date = context['dag_run'].execution_date
     print(f"DAG start date: {start_date}")
     
+    
     # Define the time range for yesterday
     end_time = start_date.replace(hour=0, minute=0, second=0, microsecond=0)
     start_time = end_time - timedelta(days=1)
