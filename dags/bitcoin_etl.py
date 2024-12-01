@@ -19,7 +19,7 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 def python_1_func():
     from airflow.operators.python import get_current_context
     context = get_current_context()
-    start_date = context['dag_run']['execution_date']
+    start_date = context['dag_run'].execution_date
     print(f"DAG start date: {start_date}")
     
     # Define the time range for yesterday
@@ -72,7 +72,7 @@ default_args={
 @dag(
     default_args=default_args,
     schedule="0 0 * * *",
-    start_date=pendulum.from_format("2024-04-01", "YYYY-MM-DD").in_tz("UTC"),
+    start_date=pendulum.from_format("2024-11-01", "YYYY-MM-DD").in_tz("UTC"),
     catchup=True,
     owner_links={
         "Alex Lopes": "mailto:alexlopespereira@gmail.com",
